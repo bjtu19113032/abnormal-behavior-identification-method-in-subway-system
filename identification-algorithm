@@ -50,8 +50,8 @@ def Max_Pooling(x, pool_size=[3,3], stride=2, padding='SAME'):
 def Concatenation(layers) :
     return tf.concat(layers, axis=3)
 
-def Linear(x,y) :
-    return tf.layers.dense(inputs=x, units=y, name='linear')
+def Linear(x) :
+    return tf.layers.dense(inputs=x, units=2, name='linear')
 
 
 def sam_module(input_xs, reduction_ratio=0.5): #SAM fuction
@@ -138,8 +138,7 @@ class DenseNet():
         x = Relu(x)
         x = Global_Average_Pooling(x)
         x = flatten(x)
-        x = Linear(x,1000)
-        x = Linear(x,2)        
+        x = Linear(x)       
         return x
 
 def Identify(spatial_map,temporal_map):    #identify function

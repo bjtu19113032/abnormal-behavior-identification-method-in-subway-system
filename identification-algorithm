@@ -125,7 +125,7 @@ class DenseNet():
             return x
 
     def Dense_net(self, input_x):        #DenseNet fuction
-        x = conv_layer(input_x, filter=2 * self.filters, kernel=[7,7], stride=2, layer_name='conv0')
+        x = conv_layer(input_x, filter=2 * self.filters, kernel=[7,7], stride=1, layer_name='conv0')
         x = Max_Pooling(x, pool_size=[3,3], stride=2)       
         x = self.dense_block(input_x=x, nb_layers=6, layer_name='dense_1')
         x = self.transition_layer(x, scope='trans_1')
